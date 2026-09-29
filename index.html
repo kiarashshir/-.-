@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>سایت درسی هشتم</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    font-family:Tahoma,Arial,sans-serif;
+}
+
+body{
+    margin:0;
+    background:#f1f5f9;
+    color:#222;
+}
+
+/* هدر */
+header{
+    background:linear-gradient(135deg,#0d47a1,#2196f3);
+    color:white;
+    text-align:center;
+    padding:30px 15px;
+}
+
+header h1{
+    margin:0;
+    font-size:28px;
+}
+
+header p{
+    margin:10px 0 0;
+}
+
+/* منو */
+nav{
+    background:white;
+    padding:10px;
+    display:flex;
+    justify-content:center;
+    gap:7px;
+    flex-wrap:wrap;
+    box-shadow:0 2px 8px #0002;
+}
+
+nav button{
+    border:none;
+    background:#1565c0;
+    color:white;
+    padding:11px 16px;
+    border-radius:10px;
+    font-size:14px;
+    cursor:pointer;
+}
+
+/* صفحات */
+.page{
+    display:none;
+    max-width:950px;
+    margin:auto;
+    padding:20px 15px;
+}
+
+.page.active{
+    display:block;
+}
+
+/* کارت */
+.card{
+    background:white;
+    padding:22px;
+    border-radius:18px;
+    margin-bottom:15px;
+    box-shadow:0 3px 12px #0001;
+}
+
+/* دکمه */
+.btn{
+    border:none;
+    padding:11px 18px;
+    border-radius:10px;
+    cursor:pointer;
+    color:white;
+    font-size:14px;
+    margin:4px;
+}
+
+.blue{
+    background:#1565c0;
+}
+
+.green{
+    background:#2e7d32;
+}
+
+.red{
+    background:#d32f2f;
+}
+
+.gray{
+    background:#555;
+}
+
+/* درس ها */
+.subjects{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:15px;
+}
+
+.subject{
+    background:white;
+    padding:25px 15px;
+    border-radius:18px;
+    text-align:center;
+    box-shadow:0 3px 12px #0001;
+}
+
+.subject h3{
+    color:#1565c0;
+}
+
+/* فصل */
+.chapter{
+    background:white;
+    padding:18px;
+    margin:12px 0;
+    border-radius:16px;
+    box-shadow:0 3px 10px #0001;
+}
+
+.chapter h3{
+    margin-top:0;
+    color:#1565c0;
+}
+
+/* سوال */
+.question{
+    background:white;
+    margin:12px 0;
+    border-radius:15px;
+    box-shadow:0 3px 10px #0001;
+    overflow:hidden;
+}
+
+.question-title{
+    padding:17px;
+    font-weight:bold;
+    cursor:pointer;
+    color:#1565c0;
+    background:white;
+}
+
+.answer{
+    padding:16px;
+    background:#e8f5e9;
+    color:#1b5e20;
+    border-top:1px solid #ddd;
+}
+
+/* آزمون */
+.option{
+    display:block;
+    background:#f5f5f5;
+    padding:12px;
+    margin:8px 0;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+.result{
+    margin-top:20px;
+    font-size:20px;
+    font-weight:bold;
+    text-align:center;
+}
+
+footer{
+    background:#263238;
+    color:white;
+    text-align:center;
+    padding:25px;
+    margin-top:30px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>📚 سایت درسی هشتم</h1>
+    <p>آموزش، سؤال و جواب و آزمون</p>
+</header>
+
+
+<nav>
+
+    <button onclick="go('home')">
+        🏠 صفحه اصلی
+    </button>
+
+    <button onclick="go('subjects')">
+        📚 درس‌ها
+    </button>
+
+    <button onclick="go('math')">
+        ➗ ریاضی
+    </button>
+
+    <button onclick="go('questions')">
+        ❓ سوال و جواب
+    </button>
+
+    <button onclick="go('exam')">
+        📝 آزمون
+    </button>
+
+</nav>
+
+
+<!-- صفحه اصلی -->
+
+<section id="home" class="page active">
+
+    <div class="card" style="text-align:center">
+
+        <h2>🎓 به سایت درسی هشتم خوش آمدید</h2>
+
+        <p>
+            اینجا می‌توانید درس‌های پایه هشتم،
+            PDFها، سوالات و آزمون‌ها را مشاهده کنید.
+        </p>
+
+        <button
+            class="btn blue"
+            onclick="go('subjects')">
+
+            📚 مشاهده درس‌ها
+
+        </button>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>⭐ امکانات سایت</h2>
+
+        <p>➗ ریاضی هشتم</p>
+        <p>📄 فایل‌های PDF</p>
+        <p>❓ سوال با جواب</p>
+        <p>📝 آزمون چهارگزینه‌ای</p>
+
+    </div>
+
+</section>
+
+
+<!-- درس ها -->
+
+<section id="subjects" class="page">
+
+    <h2>📚 درس‌های پایه هشتم</h2>
+
+    <div class="subjects">
+
+        <div class="subject">
+
+            <h3>➗ ریاضی</h3>
+
+            <p>۸ فصل ریاضی</p>
+
+            <button
+                class="btn blue"
+                onclick="go('math')">
+
+                ورود به ریاضی
+
+            </button>
+
+        </div>
+
+
+        <div class="subject">
+
+            <h3>🔬 علوم</h3>
+            <p>به‌زودی</p>
+
+        </div>
+
+
+        <div class="subject">
+
+            <h3>📖 فارسی</h3>
+            <p>به‌زودی</p>
+
+        </div>
+
+
+        <div class="subject">
+
+            <h3>🇬🇧 انگلیسی</h3>
+            <p>به‌زودی</p>
+
+        </div>
+
+
+        <div class="subject">
+
+            <h3>🕌 عربی</h3>
+            <p>به‌زودی</p>
+
+        </div>
+
+
+        <div class="subject">
+
+            <h3>🌍 مطالعات</h3>
+            <p>به‌زودی</p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ریاضی -->
+
+<section id="math" class="page">
+
+    <button
+        class="btn gray"
+        onclick="go('subjects')">
+
+        ↩️ بازگشت
+
+    </button>
+
+    <h2>➗ ریاضی هشتم</h2>
+
+
+    <div id="chapterBox"></div>
+
+</section>
+
+
+<!-- سوال جواب -->
+
+<section id="questions" class="page">
+
+    <button
+        class="btn gray"
+        onclick="go('math')">
+
+        ↩️ بازگشت
+
+    </button>
+
+    <h2 id="questionTitle">
+        ❓ سوال و جواب
+    </h2>
+
+    <div id="questionBox"></div>
+
+</section>
+
+
+<!-- آزمون -->
+
+<section id="exam" class="page">
+
+    <h2>📝 آزمون ریاضی</h2>
+
+
+    <div class="card">
+
+        <b>۱. حاصل ۵ + ۳ × ۲ کدام است؟</b>
+
+        <label class="option">
+            <input type="radio" name="q1" value="11">
+            ۱۱
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q1" value="16">
+            ۱۶
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q1" value="10">
+            ۱۰
+        </label>
+
+    </div>
+
+
+    <div class="card">
+
+        <b>۲. حاصل ۲³ کدام است؟</b>
+
+        <label class="option">
+            <input type="radio" name="q2" value="6">
+            ۶
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q2" value="8">
+            ۸
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q2" value="9">
+            ۹
+        </label>
+
+    </div>
+
+
+    <div class="card">
+
+        <b>۳. کدام عدد اول است؟</b>
+
+        <label class="option">
+            <input type="radio" name="q3" value="9">
+            ۹
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q3" value="15">
+            ۱۵
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q3" value="7">
+            ۷
+        </label>
+
+    </div>
+
+
+    <button
+        class="btn blue"
+        onclick="checkExam()">
+
+        ✅ تصحیح آزمون
+
+    </button>
+
+    <div id="result" class="result"></div>
+
+</section>
+
+
+<footer>
+
+    📚 سایت درسی هشتم
+
+</footer>
+
+
+<script>
+
+/* تغییر صفحه */
+
+function go(page){
+
+    var pages = document.querySelectorAll(".page");
+
+    for(var i=0; i<pages.length; i++){
+
+        pages[i].classList.remove("active");
+
+    }
+
+    var target = document.getElementById(page);
+
+    if(target){
+
+        target.classList.add("active");
+
+        window.scrollTo(0,0);
+
+    }
+
+}
+
+
+/* فصل های ریاضی */
+
+var chapters = [
+
+    "فصل اول: عددهای صحیح و گویا",
+    "فصل دوم: عددهای اول",
+    "فصل سوم: چندضلعی‌ها",
+    "فصل چهارم: جبر و معادله",
+    "فصل پنجم: بردار و مختصات",
+    "فصل ششم: مثلث",
+    "فصل هفتم: توان و جذر",
+    "فصل هشتم: آمار و احتمال"
+
+];
+
+
+var chapterBox =
+    document.getElementById("chapterBox");
+
+
+for(var i=0; i<chapters.length; i++){
+
+    var n = i + 1;
+
+    chapterBox.innerHTML +=
+
+    '<div class="chapter">' +
+
+        '<h3>📘 ' + chapters[i] + '</h3>' +
+
+        '<p>جزوه و سوالات این فصل</p>' +
+
+        '<a class="btn red" ' +
+        'href="pdf/math' + n + '.pdf" ' +
+        'target="_blank">' +
+
+        '📄 مشاهده PDF' +
+
+        '</a>' +
+
+        '<button class="btn green" ' +
+        'onclick="showQuestions(' + n + ')">' +
+
+        '❓ سوال و جواب' +
+
+        '</button>' +
+
+    '</div>';
+
+}
+
+
+/* سوالات */
+
+var questions = {
+
+1:[
+["حاصل ۵ + ۳ چیست؟","۸"],
+["عدد مخالف ۷ چیست؟","−۷"],
+["حاصل ۱۰ − ۱۵ چیست؟","−۵"]
+],
+
+2:[
+["عدد اول چیست؟","عددی بزرگ‌تر از ۱ که فقط بر ۱ و خودش بخش‌پذیر باشد."],
+["آیا ۷ عدد اول است؟","بله"],
+["آیا ۹ عدد اول است؟","خیر، چون بر ۳ بخش‌پذیر است."]
+],
+
+3:[
+["مجموع زاویه‌های مثلث چند درجه است؟","۱۸۰ درجه"],
+["چهارضلعی چند ضلع دارد؟","۴ ضلع"],
+["مربع چند زاویه قائمه دارد؟","۴ زاویه قائمه"]
+],
+
+4:[
+["اگر x + 5 = 12 باشد، x چند است؟","۷"],
+["اگر x = ۳ باشد، 2x چند است؟","۶"],
+["معادله چیست؟","تساوی‌ای که در آن معمولاً یک یا چند مجهول وجود دارد."]
+],
+
+5:[
+["محور افقی مختصات چه نام دارد؟","محور x"],
+["محور عمودی چه نام دارد؟","محور y"],
+["مختصات نقطه از چند عدد تشکیل می‌شود؟","دو عدد"]
+],
+
+6:[
+["مجموع زاویه‌های مثلث چند درجه است؟","۱۸۰ درجه"],
+["مثلث متساوی‌الاضلاع چند ضلع برابر دارد؟","۳ ضلع"],
+["زاویه قائمه چند درجه است؟","۹۰ درجه"]
+],
+
+7:[
+["حاصل ۲² چیست؟","۴"],
+["حاصل ۳² چیست؟","۹"],
+["جذر ۲۵ چیست؟","۵"]
+],
+
+8:[
+["احتمال یک اتفاق قطعی چند است؟","۱"],
+["احتمال یک اتفاق غیرممکن چند است؟","۰"],
+["میانگین ۲، ۴ و ۶ چیست؟","۴"]
+]
+
+};
+
+
+/* نمایش سوالات */
+
+function showQuestions(number){
+
+    go("questions");
+
+    document.getElementById("questionTitle").innerText =
+        "❓ سوال و جواب " + chapters[number-1];
+
+    var box =
+        document.getElementById("questionBox");
+
+    box.innerHTML = "";
+
+    var list = questions[number];
+
+    for(var i=0; i<list.length; i++){
+
+        box.innerHTML +=
+
+        '<div class="question">' +
+
+            '<div class="question-title" ' +
+            'onclick="toggleAnswer(this)">' +
+
+            '❓ ' + list[i][0] +
+
+            '</div>' +
+
+            '<div class="answer" style="display:none">' +
+
+            '✅ جواب درست: <b>' +
+            list[i][1] +
+            '</b>' +
+
+            '</div>' +
+
+        '</div>';
+
+    }
+
+}
+
+
+/* باز و بسته شدن جواب */
+
+function toggleAnswer(element){
+
+    var answer =
+        element.nextElementSibling;
+
+    if(answer.style.display === "none"){
+
+        answer.style.display = "block";
+
+    }else{
+
+        answer.style.display = "none";
+
+    }
+
+}
+
+
+/* تصحیح آزمون */
+
+function checkExam(){
+
+    var score = 0;
+
+
+    var q1 =
+        document.querySelector(
+            'input[name="q1"]:checked'
+        );
+
+    var q2 =
+        document.querySelector(
+            'input[name="q2"]:checked'
+        );
+
+    var q3 =
+        document.querySelector(
+            'input[name="q3"]:checked'
+        );
+
+
+    if(q1 && q1.value === "11"){
+        score++;
+    }
+
+    if(q2 && q2.value === "8"){
+        score++;
+    }
+
+    if(q3 && q3.value === "7"){
+        score++;
+    }
+
+
+    document.getElementById("result").innerHTML =
+        "🎯 نمره شما: " + score + " از ۳";
+
+
+    if(score === 3){
+
+        document.getElementById("result").innerHTML +=
+            "<br>🌟 هر ۳ پاسخ درست بود!";
+
+    }
+
+}
+
+</script>
+
+</body>
+  </html>
